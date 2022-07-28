@@ -1,0 +1,59 @@
+field = [1,2,3,
+4,5,6,
+7,8,9]
+
+winner = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+
+def print_field():
+    print(field[0], end = " ")
+    print(field[1], end = " ")
+    print(field[2])
+ 
+    print(field[3], end = " ")
+    print(field[4], end = " ")
+    print(field[5])
+ 
+    print(field[6], end = " ")
+    print(field[7], end = " ")
+    print(field[8])    
+ 
+def step_field(step,symbol):
+    ind = field.index(step)
+    field[ind] = symbol
+ 
+def get_result():
+    win = ""
+ 
+    for i in winner:
+        if field[i[0]] == "X" and field[i[1]] == "X" and field[i[2]] == "X":
+            win = "X"
+        if field[i[0]] == "O" and field[i[1]] == "O" and field[i[2]] == "O":
+            win = "O"   
+             
+    return win
+ 
+game_over = False
+playerX = True
+ 
+while game_over == False:
+ 
+    print_field()
+ 
+    if playerX == True:
+        symbol = "X"
+        step = int(input("Игрок Х,твой ход: "))
+    else:
+        symbol = "O"
+        step = int(input("Игрок 0,товй ход: "))
+ 
+    step_field(step,symbol) 
+    win = get_result() 
+    if win != "":
+        game_over = True
+    else:
+        game_over = False
+ 
+    playerX = not(playerX)        
+ 
+print_field()
+print("Победил", win)
