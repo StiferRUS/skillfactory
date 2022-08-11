@@ -12,10 +12,10 @@ class BoardException(Exception):
     pass
 class BoardOutException(BoardException):
     def __str__(self):
-        return "Вы пытаетесь выстрелить за доску!"
+        return "Стреляйте в пределах доски!"
 class BoardUsedException(BoardException):
     def __str__(self):
-        return "Вы уже стреляли в эту клетку"
+        return "В эту клетку уже стреляли"
 class BoardWrongShipException(BoardException):
     pass
 class Ship:
@@ -164,22 +164,15 @@ class Game:
         board.begin()
         return board
     def greet(self):
-        print("-------------------")
-        print("  Приветсвуем вас  ")
-        print("      в игре       ")
-        print("    морской бой    ")
-        print("-------------------")
-        print(" формат ввода: x y ")
-        print(" x - номер строки  ")
-        print(" y - номер столбца ")
+        print("    Морской бой    ")
     def loop(self):
         num = 0
         while True:
             print("-"*20)
-            print("Доска пользователя:")
+            print("Поле пользователя:")
             print(self.us.board)
             print("-"*20)
-            print("Доска компьютера:")
+            print("Поле компьютера:")
             print(self.ai.board)
             if num % 2 == 0:
                 print("-"*20)
